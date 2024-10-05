@@ -31,7 +31,11 @@ def main():
     paddle_sprites = pygame.sprite.RenderPlain(left_paddle, right_paddle)    
     life_bar_sprites = pygame.sprite.RenderPlain(left_life_bar, right_life_bar)
 
+
+    clock=pygame.time.Clock()
+    
     while 1:
+        clock.tick(40)
         for event in pygame.event.get():
             if event.type == QUIT:
                 return
@@ -73,8 +77,7 @@ def main():
 
 def handle_ball_bounce_from_paddle(ball, left_paddle, right_paddle):
     if (ball.rect.colliderect(left_paddle.rect) and 
-        ball.vector.x < 0 and 
-        abs(ball.rect.left - left_paddle.rect.right) < 5):
+        ball.vector.x < 0):
         ball.bounceX()
 
     if (ball.rect.colliderect(right_paddle.rect) and 
